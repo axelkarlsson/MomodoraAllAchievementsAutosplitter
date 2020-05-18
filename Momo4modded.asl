@@ -30,6 +30,7 @@ state("MomodoraRUtM", "v1.05b Steam")
 	double MaxHealth : 0x02304CE8, 0x4, 0xA0;
 	double Choir :  0x230C440, 0x0, 0x4, 0x60, 0x4, 0x4, 0x6A0;
 	double BugCount : 0x230C440, 0x0, 0x4, 0x60, 0x4, 0x4, 0x3C0;
+	double SaveSlot : 0x230C440, 0x0, 0x4, 0x60, 0x4, 0x4, 0xFA0;
 	
 }
 
@@ -107,6 +108,8 @@ init
 
 	vars.achievementTrackerDict = null;
 
+	vars.activeSlot = 0;
+
 	vars.UpdateAchievementTrackers = (Action<Process>)((proc) =>
 	{
 		if(vars.achievementTrackerDict == null)
@@ -182,6 +185,10 @@ update
 	{
 		vars.Splits.Clear();
 		vars.yeet = false;
+		if(current.InGame == 1)
+		{
+			vars.UpdateAchievementTrackers(game);
+		}
 	}
 
 	// Initialize flags when the flags pointer gets initialized/changes, or we load up LiveSplit while in-game
@@ -217,7 +224,7 @@ update
 	// Update all MemoryWatchers in vars.Flags
 	new List<MemoryWatcher<double>>(vars.Flags.Values).ForEach((Action<MemoryWatcher<double>>)(mw => mw.Update(game)));
 
-	if(current.InGame == 1)
+	if(current.InGame == 1 && vars.activeSlot == current.SaveSlot)
 	{
 		vars.UpdateAchievementTrackers(game);
 	}
@@ -225,7 +232,11 @@ update
 
 start
 {
-	return (old.DifficultySelector > 0 && current.DifficultySelector == 0);
+	if(old.DifficultySelector > 0 && current.DifficultySelector == 0)
+	{
+		vars.activeSlot = current.SaveSlot;
+		return true;
+	}
 }
 
 reset

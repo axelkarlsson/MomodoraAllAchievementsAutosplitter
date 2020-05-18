@@ -176,7 +176,6 @@ init
 
 update
 {
-	vars.UpdateAchievementTrackers(game);
 	
 	// Clear any hit splits if timer stops
 	if (timer.CurrentPhase == TimerPhase.NotRunning)
@@ -217,6 +216,11 @@ update
 
 	// Update all MemoryWatchers in vars.Flags
 	new List<MemoryWatcher<double>>(vars.Flags.Values).ForEach((Action<MemoryWatcher<double>>)(mw => mw.Update(game)));
+
+	if(current.InGame == 1)
+	{
+		vars.UpdateAchievementTrackers(game);
+	}
 }
 
 start

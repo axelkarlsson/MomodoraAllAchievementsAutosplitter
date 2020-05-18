@@ -107,6 +107,13 @@ init
 	vars.achievementList.Add("Insane");
 	vars.achievementList.Add("True End");
 
+	//For tracking when achievements are completed and later reverted (if you deliver shroom and then die you still have the achievement)
+	vars.achievedDict = new Dictionary<string, bool>();
+	foreach(string name in vars.achievementList)
+	{
+		vars.achievedDict.Add(name, false);
+	}
+
 	vars.achievementTrackerDict = null;
 
 	vars.activeSlot = 0;
@@ -135,46 +142,55 @@ init
 			       }
 			}
 		}
-		foreach(string name in vars.achievementTrackerDict.Keys){
-		//vars.achievementTrackerDict[name].TextColor = Color.FromArgb(0,0,0);
-		switch (name)
+		foreach(string name in vars.achievementTrackerDict.Keys)
 		{
-		case "Deathless":
-		     //0 good, 1+ bad
-		     vars.achievementTrackerDict[name].Text2 = (current.Deaths == 0) ? "Deathless" : "Not Deathless";
-		     break;
-		case "Pacifist":
-		     //0 good, 1+ bad
-		     vars.achievementTrackerDict[name].Text2 = (current.CommonEnemiesKilled == 0) ? "Pacifist" : "Murderer";
-		     break;
-		case "Explorer":
-		     //454 Done
-		     vars.achievementTrackerDict[name].Text2 = String.Format("{0}/454",current.RoomsVisited);
-		     break;
-		case "Shroom":
-		     //1 done
-		     vars.achievementTrackerDict[name].Text2 = (current.ShroomDelivered == 1) ? "Delivered" : ((current.ShroomFound == 1) ? "Not Delivered" : "Not Found");
-		     break;
-		case "Bugs":
-		     //1 done in BugsDelivered, BugCount is how many are collected
-		     vars.achievementTrackerDict[name].Text2 = (current.BugsDelivered == 1) ? "Delivered" : String.Format("{0}/20",current.BugCount);
-		     break;
-		case "Choir":
-		     //1 done
-		     vars.achievementTrackerDict[name].Text2 = (current.Choir == 1) ? "Killed" : "Alive";
-		     break;
-		case "Health":
-		     //18 done
-		     vars.achievementTrackerDict[name].Text2 = String.Format("{0}/17",current.MaxHealth - 1);
-		     break;
-		case "Insane":
-		     vars.achievementTrackerDict[name].Text2 = (current.Difficulty == 4) ? "Insane" : "Not insane";
-		     break;
-		case "True End":
-		     vars.achievementTrackerDict[name].Text2 = (current.GreenLeaf == 1) ? "True End" : "Normal End";
-		     break;
+			if(!vars.achievedDict[name])
+			{
+				switch (name)
+				{
+				case "Deathless":
+				     //0 good, 1+ bad
+				     vars.achievementTrackerDict[name].Text2 = (current.Deaths == 0) ? "Deathless" : "Not Deathless";
+				     break;
+				case "Pacifist":
+		     		     //0 good, 1+ bad
+		     		     vars.achievementTrackerDict[name].Text2 = (current.CommonEnemiesKilled == 0) ? "Pacifist" : "Murderer";
+		     		     break;
+				case "Explorer":
+		     		     //454 Done
+				     if(current.RoomsVisited == 454){ vars.achievedDict[name] = true;}
+		     		     vars.achievementTrackerDict[name].Text2 = (current.RoomsVisited == 454) ? "Explored" : String.Format("{0}/454",current.RoomsVisited);
+		     		     break;
+				case "Shroom":
+		     		     //1 done test
+				     if(current.ShroomDelivered == 1){ vars.achievedDict[name] = true;}
+		     		     vars.achievementTrackerDict[name].Text2 = (current.ShroomDelivered == 1) ? "Delivered" : ((current.ShroomFound == 1) ? "Not Delivered" : "Not Found");
+		     		     break;
+				case "Bugs":
+				     if(current.BugsDelivered == 1) {vars.achievedDict[name] = true;}
+		     		     //1 done in BugsDelivered, BugCount is how many are collected
+		     		     vars.achievementTrackerDict[name].Text2 = (current.BugsDelivered == 1) ? "Delivered" : String.Format("{0}/20",current.BugCount);
+		     		     break;
+				case "Choir":
+		     		     //1 done
+     				     if(current.Choir == 1){ vars.achievedDict[name] = true;}
+		     		     vars.achievementTrackerDict[name].Text2 = (current.Choir == 1) ? "Killed" : "Alive";
+		     		     break;
+				case "Health":
+				     if(current.MaxHealth == 18){ vars.achievedDict[name] = true;}
+		     		     //17 is done, tracks maxhealth and insane starts with 1 so max health is 18, -1 means 17 fragments
+		     		     vars.achievementTrackerDict[name].Text2 = String.Format("{0}/17",current.MaxHealth - 1);
+		     		     break;
+				case "Insane":
+		     		     vars.achievementTrackerDict[name].Text2 = (current.Difficulty == 4) ? "Insane" : "Not insane";
+		     		     break;
+				case "True End":
+		     		     vars.achievementTrackerDict[name].Text2 = (current.GreenLeaf == 1) ? "True End" : "Normal End";
+		     		     break;
+				}
+			}
 		}
-	}
+	
 	});
 }
 
@@ -236,6 +252,10 @@ start
 	if(old.DifficultySelector > 0 && current.DifficultySelector == 0)
 	{
 		vars.activeSlot = current.SaveSlot;
+		foreach(string name in vars.achievementList)
+		{
+			vars.achievedDict[name] = false;
+		}
 		return true;
 	}
 }

@@ -63,14 +63,15 @@ startup
 	settings.SetToolTip("100%Check", "If checked, will only split for Queen if Choir is defeated, 17 vitality fragments were obtained, and 20 bug ivories were collected.");
 	// SETTINGS END //
 	
-	vars.CreateTextComponent = (Func<string, dynamic>)((name) => {
-	var textComponentAssembly = Assembly.LoadFrom("Components\\LiveSplit.Text.dll");
-        dynamic textComponent = Activator.CreateInstance(textComponentAssembly.GetType("LiveSplit.UI.Components.TextComponent"), timer);
-        timer.Layout.LayoutComponents.Add(new LiveSplit.UI.Components.LayoutComponent("LiveSplit.Text.dll", textComponent as LiveSplit.UI.Components.IComponent));
-        textComponent.Settings.Text1 = name;
-	print(textComponent.GetType().ToString());
-        return textComponent.Settings;
-    });
+	vars.CreateTextComponent = (Func<string, dynamic>)((name) =>
+	{
+		var textComponentAssembly = Assembly.LoadFrom("Components\\LiveSplit.Text.dll");
+		dynamic textComponent = Activator.CreateInstance(textComponentAssembly.GetType("LiveSplit.UI.Components.TextComponent"), timer);
+        	timer.Layout.LayoutComponents.Add(new LiveSplit.UI.Components.LayoutComponent("LiveSplit.Text.dll", textComponent as LiveSplit.UI.Components.IComponent));
+        	textComponent.Settings.Text1 = name;
+		print(textComponent.GetType().ToString());
+		return textComponent.Settings;
+    	});
 }
 
 init
@@ -106,65 +107,71 @@ init
 
 	vars.achievementTrackerDict = null;
 
-    vars.UpdateAchievementTrackers = (Action<Process>)((proc) => {
-        if(vars.achievementTrackerDict == null) {
-	    vars.achievementTrackerDict = new Dictionary<string,dynamic>();
-	    bool ComponentFound = false;
-	    foreach (string name in vars.achievementList) {
-	       ComponentFound = false;   
-               foreach (dynamic component in timer.Layout.Components) {
-                   if (component.GetType().Name != "TextComponent") continue;
-               	   if (component.Settings.Text1 == name){
-		      vars.achievementTrackerDict.Add(name,component.Settings);
-		      ComponentFound = true;
-		   }
-               }	    
-            if(!ComponentFound){
-		vars.achievementTrackerDict.Add(name, vars.CreateTextComponent(name));
-	    }
-        }
+	vars.UpdateAchievementTrackers = (Action<Process>)((proc) =>
+	{
+		if(vars.achievementTrackerDict == null)
+		{
+			vars.achievementTrackerDict = new Dictionary<string,dynamic>();
+			bool ComponentFound = false;
+			foreach (string name in vars.achievementList)
+			{
+				ComponentFound = false;   
+				foreach (dynamic component in timer.Layout.Components)
+				{
+					if (component.GetType().Name != "TextComponent") continue;
+					if (component.Settings.Text1 == name)
+					{
+						vars.achievementTrackerDict.Add(name,component.Settings);
+						ComponentFound = true;
+					}
+		               }	    
+			       if(!ComponentFound)
+			       {
+			       vars.achievementTrackerDict.Add(name, vars.CreateTextComponent(name));
+			       }
+			}
+		}
+		foreach(string name in vars.achievementTrackerDict.Keys){
+		//vars.achievementTrackerDict[name].TextColor = Color.FromArgb(0,0,0);
+		switch (name)
+		{
+		case "Deathless":
+		     //0 good, 1+ bad
+		     vars.achievementTrackerDict[name].Text2 = (current.Deaths == 0) ? "Deathless" : "Not Deathless";
+		     break;
+		case "Pacifist":
+		     //0 good, 1+ bad
+		     vars.achievementTrackerDict[name].Text2 = (current.CommonEnemiesKilled == 0) ? "Pacifist" : "Murderer";
+		     break;
+		case "Explorer":
+		     //454 Done
+		     vars.achievementTrackerDict[name].Text2 = String.Format("{0}/454",current.RoomsVisited);
+		     break;
+		case "Shroom":
+		     //1 done
+		     vars.achievementTrackerDict[name].Text2 = (current.ShroomDelivered == 1) ? "Delivered" : "Not Delivered";
+		     break;
+		case "Bugs":
+		     //1 done in BugsDelivered, BugCount is how many are collected
+		     vars.achievementTrackerDict[name].Text2 = (current.BugsDelivered == 1) ? "Delivered" : String.Format("{0}/20",current.BugCount);
+		     break;
+		case "Choir":
+		     //1 done
+		     vars.achievementTrackerDict[name].Text2 = (current.Choir == 1) ? "Killed" : "Alive";
+		     break;
+		case "Health":
+		     //18 done
+		     vars.achievementTrackerDict[name].Text2 = String.Format("{0}/17",current.MaxHealth - 1);
+		     break;
+		case "Insane":
+		     vars.achievementTrackerDict[name].Text2 = (current.Difficulty == 4) ? "Insane" : "Not insane";
+		     break;
+		case "True End":
+		     vars.achievementTrackerDict[name].Text2 = (current.GreenLeaf == 1) ? "True End" : "Normal End";
+		     break;
+		}
 	}
-	foreach(string name in vars.achievementTrackerDict.Keys){
-            //vars.achievementTrackerDict[name].TextColor = Color.FromArgb(0,0,0);
-	    switch (name)
-	    {
-	    case "Deathless":
-	    //0 good, 1+ bad
-	    vars.achievementTrackerDict[name].Text2 = (current.Deaths == 0) ? "Deathless" : "Not Deathless";
-	    break;
-	    case "Pacifist":
-	    //0 good, 1+ bad
-	    vars.achievementTrackerDict[name].Text2 = (current.CommonEnemiesKilled == 0) ? "Pacifist" : "Murderer";
-	    break;
-	    case "Explorer":
-	    //454 Done
-	    vars.achievementTrackerDict[name].Text2 = String.Format("{0}/454",current.RoomsVisited);
-	    break;
-	    case "Shroom":
-	    //1 done
-	    vars.achievementTrackerDict[name].Text2 = (current.ShroomDelivered == 1) ? "Delivered" : "Not Delivered";
-	    break;
-	    case "Bugs":
-	    //1 done
-	    vars.achievementTrackerDict[name].Text2 = (current.BugsDelivered == 1) ? "Delivered" : String.Format("{0}/20",current.BugCount);
-	    break;
-	    case "Choir":
-	    //1 done
-	    vars.achievementTrackerDict[name].Text2 = (current.Choir == 1) ? "Killed" : "Alive";
-	    break;
-	    case "Health":
-	    //18 done
-	    vars.achievementTrackerDict[name].Text2 = String.Format("{0}/18",current.MaxHealth);
-	    break;
-	    case "Insane":
-	    vars.achievementTrackerDict[name].Text2 = (current.Difficulty == 4) ? "Insane" : "Not insane";
-	    break;
-	    case "True End":
-	    vars.achievementTrackerDict[name].Text2 = (current.GreenLeaf == 1) ? "True End" : "Normal End";
-	    break;
-	    }
-	}
-    });
+	});
 }
 
 update

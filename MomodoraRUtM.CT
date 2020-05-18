@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="29">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>22</ID>
+      <Description>"Pointers"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>23</ID>
+          <Description>"Room"</Description>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>50</ID>
+              <Description>"pointerscan result"</Description>
+              <LastState Value="344" RealAddress="09C7D810"/>
+              <VariableType>Double</VariableType>
+              <Address>"MomodoraRUtM.exe"+02304CE8</Address>
+              <Offsets>
+                <Offset>870</Offset>
+                <Offset>4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>51</ID>
+              <Description>"pointerscan result"</Description>
+              <LastState Value="344" RealAddress="09C7D810"/>
+              <VariableType>Double</VariableType>
+              <Address>"MomodoraRUtM.exe"+02304CEC</Address>
+              <Offsets>
+                <Offset>870</Offset>
+                <Offset>4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>52</ID>
+              <Description>"pointerscan result"</Description>
+              <LastState Value="344" RealAddress="09C7D810"/>
+              <VariableType>Double</VariableType>
+              <Address>"MomodoraRUtM.exe"+0230C440</Address>
+              <Offsets>
+                <Offset>870</Offset>
+                <Offset>4</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>24</ID>
+          <Description>"Death"</Description>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>37</ID>
+              <Description>"pointerscan result"</Description>
+              <LastState Value="0" RealAddress="09C7D4E0"/>
+              <VariableType>Double</VariableType>
+              <Address>"MomodoraRUtM.exe"+02304CE8</Address>
+              <Offsets>
+                <Offset>540</Offset>
+                <Offset>4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>38</ID>
+              <Description>"pointerscan result"</Description>
+              <LastState Value="0" RealAddress="09C7D4E0"/>
+              <VariableType>Double</VariableType>
+              <Address>"MomodoraRUtM.exe"+02304CEC</Address>
+              <Offsets>
+                <Offset>540</Offset>
+                <Offset>4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>39</ID>
+              <Description>"pointerscan result"</Description>
+              <LastState Value="0" RealAddress="09C7D4E0"/>
+              <VariableType>Double</VariableType>
+              <Address>"MomodoraRUtM.exe"+0230C440</Address>
+              <Offsets>
+                <Offset>540</Offset>
+                <Offset>4</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>25</ID>
+          <Description>"Health"</Description>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>47</ID>
+              <Description>"pointerscan result"</Description>
+              <LastState Value="15" RealAddress="09C7CFA0"/>
+              <VariableType>Double</VariableType>
+              <Address>"MomodoraRUtM.exe"+02304CE8</Address>
+              <Offsets>
+                <Offset>0</Offset>
+                <Offset>4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>48</ID>
+              <Description>"pointerscan result"</Description>
+              <LastState Value="15" RealAddress="09C7CFA0"/>
+              <VariableType>Double</VariableType>
+              <Address>"MomodoraRUtM.exe"+02304CEC</Address>
+              <Offsets>
+                <Offset>0</Offset>
+                <Offset>4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>49</ID>
+              <Description>"pointerscan result"</Description>
+              <LastState Value="15" RealAddress="09C7CFA0"/>
+              <VariableType>Double</VariableType>
+              <Address>"MomodoraRUtM.exe"+0230C440</Address>
+              <Offsets>
+                <Offset>0</Offset>
+                <Offset>4</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>59</ID>
+          <Description>"MaxHealth"</Description>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>56</ID>
+              <Description>"pointerscan result"</Description>
+              <LastState Value="15" RealAddress="09C7D040"/>
+              <VariableType>Double</VariableType>
+              <Address>"MomodoraRUtM.exe"+02304CE8</Address>
+              <Offsets>
+                <Offset>A0</Offset>
+                <Offset>4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>57</ID>
+              <Description>"pointerscan result"</Description>
+              <LastState Value="15" RealAddress="09C7D040"/>
+              <VariableType>Double</VariableType>
+              <Address>"MomodoraRUtM.exe"+02304CEC</Address>
+              <Offsets>
+                <Offset>A0</Offset>
+                <Offset>4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>58</ID>
+              <Description>"pointerscan result"</Description>
+              <LastState Value="15" RealAddress="09C7D040"/>
+              <VariableType>Double</VariableType>
+              <Address>"MomodoraRUtM.exe"+0230C440</Address>
+              <Offsets>
+                <Offset>A0</Offset>
+                <Offset>4</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>36</ID>
+          <Description>"Pacifist"</Description>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>33</ID>
+              <Description>"PacifistPointer1"</Description>
+              <LastState Value="21" RealAddress="0E70FF28"/>
+              <VariableType>Double</VariableType>
+              <Address>"MomodoraRUtM.exe"+02304CE8</Address>
+              <Offsets>
+                <Offset>490</Offset>
+                <Offset>4</Offset>
+                <Offset>4</Offset>
+                <Offset>60</Offset>
+                <Offset>4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>34</ID>
+              <Description>"PacifistPointer2"</Description>
+              <LastState Value="21" RealAddress="0E70FF28"/>
+              <VariableType>Double</VariableType>
+              <Address>"MomodoraRUtM.exe"+02304CEC</Address>
+              <Offsets>
+                <Offset>490</Offset>
+                <Offset>4</Offset>
+                <Offset>4</Offset>
+                <Offset>60</Offset>
+                <Offset>4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>35</ID>
+              <Description>"PacifistPointer3"</Description>
+              <LastState Value="21" RealAddress="0E70FF28"/>
+              <VariableType>Double</VariableType>
+              <Address>"MomodoraRUtM.exe"+0230C440</Address>
+              <Offsets>
+                <Offset>490</Offset>
+                <Offset>4</Offset>
+                <Offset>4</Offset>
+                <Offset>60</Offset>
+                <Offset>4</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>63</ID>
+          <Description>"Difficulty"</Description>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>60</ID>
+              <Description>"pointerscan result"</Description>
+              <LastState Value="4" RealAddress="0E7100C8"/>
+              <VariableType>Double</VariableType>
+              <Address>"MomodoraRUtM.exe"+0230C440</Address>
+              <Offsets>
+                <Offset>630</Offset>
+                <Offset>4</Offset>
+                <Offset>4</Offset>
+                <Offset>60</Offset>
+                <Offset>4</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>61</ID>
+              <Description>"pointerscan result"</Description>
+              <LastState Value="4" RealAddress="0E7100C8"/>
+              <VariableType>Double</VariableType>
+              <Address>"MomodoraRUtM.exe"+02304CEC</Address>
+              <Offsets>
+                <Offset>630</Offset>
+                <Offset>4</Offset>
+                <Offset>4</Offset>
+                <Offset>60</Offset>
+                <Offset>4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>62</ID>
+              <Description>"pointerscan result"</Description>
+              <LastState Value="4" RealAddress="0E7100C8"/>
+              <VariableType>Double</VariableType>
+              <Address>"MomodoraRUtM.exe"+02304CE8</Address>
+              <Offsets>
+                <Offset>630</Offset>
+                <Offset>4</Offset>
+                <Offset>4</Offset>
+                <Offset>60</Offset>
+                <Offset>4</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>66</ID>
+          <Description>"Ivory Bugs"</Description>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>65</ID>
+              <Description>"Ivory Bugs count"</Description>
+              <LastState Value="20" RealAddress="0E70FE58"/>
+              <VariableType>Double</VariableType>
+              <Address>"MomodoraRUtM.exe"+230C440</Address>
+              <Offsets>
+                <Offset>3C0</Offset>
+                <Offset>4</Offset>
+                <Offset>4</Offset>
+                <Offset>60</Offset>
+                <Offset>4</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>78</ID>
+          <Description>"BugsDelivered"</Description>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>77</ID>
+              <Description>"20BugDelivered"</Description>
+              <LastState Value="0" RealAddress="0E710258"/>
+              <VariableType>Double</VariableType>
+              <Address>"MomodoraRUtM.exe"+230C440</Address>
+              <Offsets>
+                <Offset>7c0</Offset>
+                <Offset>4</Offset>
+                <Offset>4</Offset>
+                <Offset>60</Offset>
+                <Offset>4</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>70</ID>
+          <Description>"Dirty shroom"</Description>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>68</ID>
+              <Description>"pointerscan result"</Description>
+              <LastState Value="0" RealAddress="0E70FF98"/>
+              <VariableType>Double</VariableType>
+              <Address>"MomodoraRUtM.exe"+02304CE8</Address>
+              <Offsets>
+                <Offset>500</Offset>
+                <Offset>4</Offset>
+                <Offset>4</Offset>
+                <Offset>60</Offset>
+                <Offset>4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>69</ID>
+              <Description>"pointerscan result"</Description>
+              <LastState Value="0" RealAddress="0E70FF98"/>
+              <VariableType>Double</VariableType>
+              <Address>"MomodoraRUtM.exe"+02304CEC</Address>
+              <Offsets>
+                <Offset>500</Offset>
+                <Offset>4</Offset>
+                <Offset>4</Offset>
+                <Offset>60</Offset>
+                <Offset>4</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>90</ID>
+          <Description>"DirtyShroomGotten"</Description>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>89</ID>
+              <Description>"No description"</Description>
+              <LastState Value="1" RealAddress="0E70FF18"/>
+              <VariableType>Double</VariableType>
+              <Address>"MomodoraRUtM.exe"+230C440</Address>
+              <Offsets>
+                <Offset>480</Offset>
+                <Offset>4</Offset>
+                <Offset>4</Offset>
+                <Offset>60</Offset>
+                <Offset>4</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>85</ID>
+          <Description>"Green Leaf"</Description>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>83</ID>
+              <Description>"Green Leaf"</Description>
+              <LastState Value="0" RealAddress="0E710098"/>
+              <VariableType>Double</VariableType>
+              <Address>"MomodoraRUtM.exe"+230C440</Address>
+              <Offsets>
+                <Offset>600</Offset>
+                <Offset>4</Offset>
+                <Offset>4</Offset>
+                <Offset>60</Offset>
+                <Offset>4</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>86</ID>
+          <Description>"Cat"</Description>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>87</ID>
+              <Description>"Cat"</Description>
+              <LastState Value="1" RealAddress="0E7101F8"/>
+              <VariableType>Double</VariableType>
+              <Address>"MomodoraRUtM.exe"+230C440</Address>
+              <Offsets>
+                <Offset>760</Offset>
+                <Offset>4</Offset>
+                <Offset>4</Offset>
+                <Offset>60</Offset>
+                <Offset>4</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>80</ID>
+          <Description>"Choir"</Description>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>79</ID>
+              <Description>"Choir is gone"</Description>
+              <LastState Value="0" RealAddress="0E710138"/>
+              <VariableType>Double</VariableType>
+              <Address>"MomodoraRUtM.exe"+230C440</Address>
+              <Offsets>
+                <Offset>6a0</Offset>
+                <Offset>4</Offset>
+                <Offset>4</Offset>
+                <Offset>60</Offset>
+                <Offset>4</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>64</ID>
+      <Description>"Base flag"</Description>
+      <LastState Value="50" RealAddress="0E70FA98"/>
+      <VariableType>Double</VariableType>
+      <Address>"MomodoraRUtM.exe"+230C440</Address>
+      <Offsets>
+        <Offset>0</Offset>
+        <Offset>4</Offset>
+        <Offset>4</Offset>
+        <Offset>60</Offset>
+        <Offset>4</Offset>
+        <Offset>0</Offset>
+      </Offsets>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>

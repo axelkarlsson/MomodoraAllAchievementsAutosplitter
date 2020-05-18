@@ -31,6 +31,7 @@ state("MomodoraRUtM", "v1.05b Steam")
 	double Choir :  0x230C440, 0x0, 0x4, 0x60, 0x4, 0x4, 0x6A0;
 	double BugCount : 0x230C440, 0x0, 0x4, 0x60, 0x4, 0x4, 0x3C0;
 	double SaveSlot : 0x230C440, 0x0, 0x4, 0x60, 0x4, 0x4, 0xFA0;
+	double ShroomFound : 0x230C440, 0x0, 0x4, 0x60, 0x4, 0x4, 0x480;
 	
 }
 
@@ -152,7 +153,7 @@ init
 		     break;
 		case "Shroom":
 		     //1 done
-		     vars.achievementTrackerDict[name].Text2 = (current.ShroomDelivered == 1) ? "Delivered" : "Not Delivered";
+		     vars.achievementTrackerDict[name].Text2 = (current.ShroomDelivered == 1) ? "Delivered" : ((current.ShroomFound == 1) ? "Not Delivered" : "Not Found");
 		     break;
 		case "Bugs":
 		     //1 done in BugsDelivered, BugCount is how many are collected

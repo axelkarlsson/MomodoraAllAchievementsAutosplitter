@@ -63,6 +63,17 @@ startup
 	settings.Add("choir", false, "Choir", "splits");
 	settings.Add("yeet", false, "Yeet", "splits");
 	settings.SetToolTip("100%Check", "If checked, will only split for Queen if Choir is defeated, 17 vitality fragments were obtained, and 20 bug ivories were collected.");
+
+	settings.Add("achievements", false, "All Achievements");
+	settings.Add("deathless", false, "Deathless","achievements");
+	settings.Add("pacifist", false, "Pacifist","achievements");
+	settings.Add("trueEnd", false, "True End","achievements");
+	settings.Add("explorer", false, "Explorer","achievements");
+	settings.Add("shroom", false, "Shroom","achievements");
+	settings.Add("insane", false, "Insane","achievements");
+	settings.Add("bugs", false, "Bugs","achievements");
+	settings.Add("health", false, "Health","achievements");
+	settings.Add("choirA", false, "Choir","achievements");
 	// SETTINGS END //
 	
 	vars.CreateTextComponent = (Func<string, dynamic>)((name) =>
@@ -71,7 +82,6 @@ startup
 		dynamic textComponent = Activator.CreateInstance(textComponentAssembly.GetType("LiveSplit.UI.Components.TextComponent"), timer);
         	timer.Layout.LayoutComponents.Add(new LiveSplit.UI.Components.LayoutComponent("LiveSplit.Text.dll", textComponent as LiveSplit.UI.Components.IComponent));
         	textComponent.Settings.Text1 = name;
-		print(textComponent.GetType().ToString());
 		return textComponent.Settings;
     	});
 }
@@ -94,8 +104,8 @@ init
 	});
 
 	vars.yeet = new bool();
-
 	//For All Achievements Tracking
+	//foreach
 	vars.achievementList = new List<string>();
 	vars.achievementList.Add("Deathless");
 	vars.achievementList.Add("Pacifist");
@@ -106,6 +116,8 @@ init
 	vars.achievementList.Add("Health");
 	vars.achievementList.Add("Insane");
 	vars.achievementList.Add("True End");
+
+	vars.trackedAchievementList = null;
 
 	//For tracking when achievements are completed and later reverted (if you deliver shroom and then die you still have the achievement)
 	vars.achievedDict = new Dictionary<string, bool>();
@@ -120,28 +132,6 @@ init
 
 	vars.UpdateAchievementTrackers = (Action<Process>)((proc) =>
 	{
-		if(vars.achievementTrackerDict == null)
-		{
-			vars.achievementTrackerDict = new Dictionary<string,dynamic>();
-			bool ComponentFound = false;
-			foreach (string name in vars.achievementList)
-			{
-				ComponentFound = false;   
-				foreach (dynamic component in timer.Layout.Components)
-				{
-					if (component.GetType().Name != "TextComponent") continue;
-					if (component.Settings.Text1 == name)
-					{
-						vars.achievementTrackerDict.Add(name,component.Settings);
-						ComponentFound = true;
-					}
-		               }	    
-			       if(!ComponentFound)
-			       {
-			       vars.achievementTrackerDict.Add(name, vars.CreateTextComponent(name));
-			       }
-			}
-		}
 		foreach(string name in vars.achievementTrackerDict.Keys)
 		{
 			if(!vars.achievedDict[name])
@@ -192,15 +182,79 @@ init
 		}
 	
 	});
+
+
+	vars.UpdateTrackerComponents = (Action<Process>)((proc) =>
+	{
+		bool tooManyComponents = false;
+		if(vars.achievementTrackerDict != null)
+		{
+			foreach(string key in vars.achievementTrackerDict.Keys)
+			{
+			if(!vars.trackedAchievementList.Contains(key))
+				{
+				vars.achievementTrackerDict = new Dictionary<string,dynamic>();
+				}
+			}
+		}
+		else
+		{
+			vars.achievementTrackerDict = new Dictionary<string,dynamic>();
+		}
+		
+		bool ComponentFound = false;
+		List<dynamic> removeableComponents = new List<dynamic>();
+		foreach (string name in vars.trackedAchievementList)
+		{
+			ComponentFound = false;   
+			foreach (dynamic component in timer.Layout.Components)
+			{
+				if (component.GetType().Name != "TextComponent") continue;
+				if (!vars.trackedAchievementList.Contains(component.Settings.Text1) && vars.achievementList.Contains(component.Settings.Text1)) removeableComponents.Add(component);
+				if (component.Settings.Text1 == name)
+				{
+					vars.achievementTrackerDict[name] = component.Settings;
+					ComponentFound = true;
+				}
+		        }    
+			if(!ComponentFound)
+			{
+			       vars.achievementTrackerDict[name] = vars.CreateTextComponent(name);
+			}
+		}
+		foreach (dynamic component in removeableComponents)
+		{
+			//print("trying to remove a component");
+			//timer.Layout.LayoutComponents.Remove(component);
+		}
+
+	});
+
+
+	vars.UpdateTrackerList = (Func<List<string>>) (() =>
+	{
+		var list = new List<string>();
+		if(settings["deathless"]) list.Add("Deathless");
+		if(settings["pacifist"]) list.Add("Pacifist");
+		if(settings["trueEnd"]) list.Add("True End");
+		if(settings["explorer"]) list.Add("Explorer");
+		if(settings["shroom"]) list.Add("Shroom");
+		if(settings["insane"]) list.Add("Insane");
+		if(settings["bugs"]) list.Add("Bugs");
+		if(settings["health"]) list.Add("Health");
+		if(settings["choirA"]) list.Add("Choir");
+		return list;
+	});
 }
 
 update
-{
-	
+{	
 	// Clear any hit splits if timer stops
 	if (timer.CurrentPhase == TimerPhase.NotRunning)
 	{
 		vars.Splits.Clear();
+		vars.trackedAchievementList = vars.UpdateTrackerList();
+		vars.UpdateTrackerComponents(game);
 		vars.yeet = false;
 		if(current.InGame == 1)
 		{
